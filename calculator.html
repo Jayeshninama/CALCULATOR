@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="wid<th=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+                box-sizing: border-box;
+                background-color:white;
+                overflow: hidden;
+            
+                
+            }
+            #outer{
+               
+                position :absolute;
+
+                border:none;
+                background-color:grey;
+                border-radius: 5px;
+            }
+            #upper{
+                position:absolute;
+                border:none;
+                background-color:#1b1a16;
+                
+
+            }
+            #left{
+                position:absolute;
+                border:none;
+                background-color:black;
+                
+            }
+            #right{
+                position:absolute;
+                border:none;
+                background-color:#1f201f;
+       
+            }
+
+            .number{
+                position:relative;
+              
+                }
+                
+                button{
+                background-color:transparent;
+                color:white;
+              text-align:center;
+                border:none;
+                }
+                button:active{
+                    background:grey;
+                    border-radius:50%;
+                }
+              
+                .symbol{
+                position:relative;
+        
+                
+                }
+
+                #back{
+                
+                    text-align: right;
+                    border: none;
+                  position:absolute;
+                    color: gray;
+                    position: relative;
+                    background-color:#1b1a16;
+                
+                }
+
+                #my_input{
+                    position:relative;
+
+                    
+                    text-align:right;
+                    border: 0;
+                    background-color:#1b1a16;
+                    color:white;
+                   
+                
+                }
+                #symbol5,#symbol5:active{
+                    background-color:red;
+                }
+
+            
+             
+        </style>
+    </head>
+    <body id="body">
+   
+        <div id="outer">
+            <input type="hidden" id="flag" name="flag" value="0">
+        
+            <div id="upper">
+                <br><br><br><br><br>
+                <p id="my_input" value="" name="my_input" ></p><br>
+            <p id="back"name="back"value="000"></p>
+            
+         
+           
+        </div>
+            <div id="left">
+                <button id="number7" onclick='fun(7);back.innerHTML=eval(my_input.innerHTML);'>7</button>
+                <button id="number8" onclick='fun(8);back.innerHTML=eval(my_input.innerHTML);'>8</button>
+                <button id="number9" onclick='fun(9);back.innerHTML=eval(my_input.innerHTML);'>9</button>
+            
+            <br>
+                <button id="number4" onclick='fun(4);back.innerHTML=eval(my_input.innerHTML);'>4</button>
+                <button id="number5" onclick='fun(5);back.innerHTML=eval(my_input.innerHTML);'>5</button>
+                <button id="number6" onclick='fun(6);back.innerHTML=eval(my_input.innerHTML);'>6</button>
+          
+           <br>
+                <button id="number1" onclick='fun(1);back.innerHTML=eval(my_input.innerHTML);'>1</button>
+                <button id="number2" onclick='fun(2);back.innerHTML=eval(my_input.innerHTML);'>2</button>
+                <button id="number3" onclick='fun(3);back.innerHTML=eval(my_input.innerHTML);'>3</button>
+            
+            <br>
+                <button id="number."onclick= "if(flag.value==0){my_input.innerHTML+='.';flag.value=1}">.</button>
+                <button id="number0" onclick='fun(0);back.innerHTML=eval(my_input.innerHTML);'>0</button>
+                <button id="numberdel" onclick='document.getElementById("my_input").innerHTML=document.getElementById("my_input").innerHTML.slice(0,-1);back.innerHTML=eval(my_input.innerHTML);'>del</button>    
+                  
+            </div>
+            <div id="right">
+                
+                <button id="symbol1" onclick='fun("/");flag.value=0'>/</button>
+                <br>
+                <button id="symbol2" onclick='fun("*");flag.value=0'>*</button>
+                <br>
+                <button id="symbol3" onclick='fun("-");flag.value=0'>-</button>
+                <br>
+                <button id="symbol4" onclick='fun("+");flag.value=0'>+</button>
+                <br>
+                <button id="symbol5" onclick='equal()'>=</button>
+            </div>
+        </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+            function equal()
+            {
+                document.getElementById("my_input").innerHTML=eval( document.getElementById("my_input").innerHTML);
+                document.getElementById("back").innerHTML="";
+            }         
+           if(((window.innerHeight/window.innerWidth)<0.8)||((window.innerHeight/window.innerWidth)>1.2))
+           {
+            if(window.innerWidth>window.innerHeight)
+            {
+                var x=document.getElementById("outer").style.height=(window.innerHeight-(window.innerHeight*.2))+'px';
+                document.getElementById("outer").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6)+'px';
+                document.getElementById("outer").style.top=((window.innerHeight-(window.innerHeight*.2))*0.1)+'px';
+                document.getElementById("outer").style.left=((window.innerHeight-(window.innerHeight*.2)))+'px';
+
+                //uper
+                document.getElementById("upper").style.width=document.getElementById("outer").style.width;
+                document.getElementById("upper").style.height=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+
+                //left
+                document.getElementById("left").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6*(3/4))+'px';
+                document.getElementById("left").style.height=(window.innerHeight-(window.innerHeight*.2))-((window.innerHeight-(window.innerHeight*.2))*0.4)+'px';
+                document.getElementById("left").style.top=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+
+                //right
+                document.getElementById("right").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6*(1/4))+'px';
+                document.getElementById("right").style.height=(window.innerHeight-(window.innerHeight*.2))-((window.innerHeight-(window.innerHeight*.2))*0.4)+'px';
+                document.getElementById("right").style.top=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+                document.getElementById("right").style.left=((window.innerHeight-(window.innerHeight*.25))*0.6*(3/4))+'px';
+
+              
+                document.getElementById("symbol1").style.fontSize='20px';
+                document.getElementById("symbol2").style.fontSize='20px';
+                document.getElementById("symbol3").style.fontSize='20px';
+                document.getElementById("symbol4").style.fontSize='20px';
+                document.getElementById("symbol5").style.fontSize='20px';
+
+                document.getElementById("symbol1").style.padding='20px';
+                document.getElementById("symbol2").style.padding='20px';
+                document.getElementById("symbol3").style.padding='20px';
+                document.getElementById("symbol4").style.padding='20px';
+                document.getElementById("symbol5").style.padding='30px';
+                //document.getElementById("symbol5").style.paddingtop='20px';
+
+
+                document.getElementById("number1").style.fontSize='20px';
+                document.getElementById("number2").style.fontSize='20px';       
+                document.getElementById("number3").style.fontSize='20px';
+                document.getElementById("number4").style.fontSize='20px';
+                document.getElementById("number5").style.fontSize='20px';
+                document.getElementById("number6").style.fontSize='20px';
+                document.getElementById("number7").style.fontSize='20px';
+                document.getElementById("number8").style.fontSize='20px';
+                document.getElementById("number9").style.fontSize='20px';
+                document.getElementById("number0").style.fontSize='20px';
+                document.getElementById("number.").style.fontSize='20px'; 
+                document.getElementById("numberdel").style.fontSize='20px';
+
+                document.getElementById("number1").style.padding='30px';
+                document.getElementById("number2").style.padding='30px';
+                document.getElementById("number3").style.padding='30px';
+                document.getElementById("number4").style.padding='30px';
+                document.getElementById("number5").style.padding='30px';
+                document.getElementById("number6").style.padding='30px';
+                document.getElementById("number7").style.padding='30px';
+                document.getElementById("number8").style.padding='30px';
+                document.getElementById("number9").style.padding='30px';
+                document.getElementById("number0").style.padding='30px';
+                document.getElementById("number.").style.padding='30px';
+                document.getElementById("numberdel").style.padding='15px';
+               
+
+
+               
+                document.getElementById("back").style.fontSize='28px';
+                document.getElementById("my_input").style.fontSize='35px';
+                document.getElementById("back").style.padding='5px';
+                document.getElementById("my_input").style.padding='5px';
+
+                
+            }
+            else{
+                //document.write("height");
+                document.getElementById("outer").style.height=(window.innerWidth-(window.innerWidth*.2))+'px';
+                document.getElementById("outer").style.width=((window.innerWidth-(window.innerWidth*.25))*0.6)+'px';
+                document.getElementById("outer").style.top=(window.innerWidth)*0.3+'px';
+                document.getElementById("outer").style.left=(window.innerWidth)*0.1+'px';
+                
+                //uper
+                document.getElementById("upper").style.width=document.getElementById("outer").style.width;
+                document.getElementById("upper").style.height=(window.innerWidth-(window.innerWidth*.2))*0.4+'px';
+
+                //left
+                document.getElementById("left").style.width=((window.innerWidth-(window.innerWidth*.25))*0.6)*3/4+'px';
+                document.getElementById("left").style.height=(window.innerWidth-(window.innerWidth*.2))-(window.innerWidth-(window.innerWidth*.2))*0.4+'px';
+               document.getElementById("left").style.top=(window.innerWidth-(window.innerWidth*.2))*0.4+'px';
+
+                //right
+                document.getElementById("right").style.width=((window.innerWidth-(window.innerWidth*.25))*0.6)*1/4+'px';
+                document.getElementById("right").style.height=(window.innerWidth-(window.innerWidth*.2))-(window.innerWidth-(window.innerWidth*.2))*0.4+'px';
+                document.getElementById("right").style.top=(window.innerWidth-(window.innerWidth*.2))*0.4+'px';
+                document.getElementById("right").style.left=((window.innerWidth-(window.innerWidth*.25))*0.6)*3/4+'px';
+
+            
+            }
+        }
+        else{
+
+            document.getElementById("outer").style.height=(window.innerHeight-(window.innerHeight*.2))+'px';
+            document.getElementById("outer").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6)+'px';
+            document.getElementById("outer").style.top=((window.innerHeight-(window.innerHeight*.2))*0.1)+'px';
+            document.getElementById("outer").style.left=((window.innerHeight-(window.innerHeight*.2))*0.4)+'px';
+
+
+               //uper
+               document.getElementById("upper").style.width=document.getElementById("outer").style.width;
+               document.getElementById("upper").style.height=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+
+               //left
+               document.getElementById("left").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6*(3/4))+'px';
+               document.getElementById("left").style.height=(window.innerHeight-(window.innerHeight*.2))-((window.innerHeight-(window.innerHeight*.2))*0.4)+'px';
+               document.getElementById("left").style.top=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+
+               //right
+               document.getElementById("right").style.width=((window.innerHeight-(window.innerHeight*.25))*0.6*(1/4))+'px';
+               document.getElementById("right").style.height=(window.innerHeight-(window.innerHeight*.2))-((window.innerHeight-(window.innerHeight*.2))*0.4)+'px';
+               document.getElementById("right").style.top=(window.innerHeight-(window.innerHeight*.2))*0.4+'px';
+               document.getElementById("right").style.left=((window.innerHeight-(window.innerHeight*.25))*0.6*(3/4))+'px';
+
+
+             
+            
+
+        }
+        function fun(x)
+        {
+           
+            
+            document.getElementById("my_input").innerHTML=document.getElementById("my_input").innerHTML+x;
+             
+        }
+
+
+        </script>
+    </body>
+</html>
